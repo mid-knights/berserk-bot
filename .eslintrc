@@ -12,5 +12,10 @@
   "parserOptions": {
     "ecmaVersion": 2018,
     "sourceType": "module"
+  },
+  "rules": {
+    "@typescript-eslint/no-namespace": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-explicit-any": "off"
   }
 }

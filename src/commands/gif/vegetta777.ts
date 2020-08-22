@@ -3,21 +3,21 @@ import { Message, MessageEmbed } from 'discord.js';
 
 import BerserkBot from '../../domain/BerserkBot';
 
-import { willyrexGifsUseCase } from './../../useCases';
+import { vegetta777GifsUseCase } from './../../useCases';
 
 export = class WillyrexCommand extends Command {
   constructor(client: BerserkBot) {
     super(client, {
-      name: 'willyrex',
-      memberName: 'willyrex',
+      name: 'vegeta777',
+      memberName: 'vegeta777',
       group: 'gif',
-      description: 'Genera una gif animado de Willyrex al servidor.',
+      description: 'Genera una gif animado de Vegeta777 al servidor.',
     });
   }
 
   async run(message: CommandoMessage): Promise<Message | Message[]> {
     try {
-      const result = await willyrexGifsUseCase.execute();
+      const result = await vegetta777GifsUseCase.execute();
 
       if (result.isRight()) {
         const embed = new MessageEmbed();

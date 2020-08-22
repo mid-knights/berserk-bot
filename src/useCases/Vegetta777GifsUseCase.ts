@@ -6,12 +6,12 @@ import { GenericAppError } from '../core/logic/AppError';
 
 type Response = Either<Result<any>, Result<string>>;
 
-export class WillyrexGifsUseCase implements UseCase<void, Response> {
+export class Vegetta777GifsUseCase implements UseCase<void, Response> {
   constructor(private gifRepo: GifRepository) {}
 
   async execute(): Promise<Response> {
     try {
-      const response = await this.gifRepo.findWillyrexGifs();
+      const response = await this.gifRepo.findVegetta777Gifs();
       let gifLinks = response.results.map(
         (opt) => opt.media.map((m) => m.gif.url)[0]
       );
@@ -19,7 +19,7 @@ export class WillyrexGifsUseCase implements UseCase<void, Response> {
       let pos = response.next;
 
       while (pos > 0) {
-        const { next, results } = await this.gifRepo.findWillyrexGifs(pos);
+        const { next, results } = await this.gifRepo.findVegetta777Gifs(pos);
         gifLinks = gifLinks.concat(
           results.map((opt) => opt.media.map((m) => m.gif.url)[0])
         );

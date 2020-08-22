@@ -1,13 +1,13 @@
 import path from 'path';
 
 import Commando from 'discord.js-commando';
-import ConfigSchema from './config/ConfigSchema';
+import EnvSchema from './../configuration/EnvSchema';
 
 export default class BerserkBot extends Commando.CommandoClient {
   public constructor() {
     super({
-      commandPrefix: '/',
-      owner: ConfigSchema.OWNER,
+      commandPrefix: 'b/',
+      owner: EnvSchema.OWNER,
     });
 
     this.registry
@@ -16,7 +16,7 @@ export default class BerserkBot extends Commando.CommandoClient {
       .registerDefaultGroups()
       .registerDefaultCommands()
       .registerCommandsIn({
-        dirname: path.join(__dirname, 'commands'),
+        dirname: path.join(__dirname, '../commands'),
         filter: /^([^.].*)\.[jt]s$/,
       });
 
@@ -29,7 +29,7 @@ export default class BerserkBot extends Commando.CommandoClient {
       this.shutdown();
     });
 
-    this.login(ConfigSchema.TOKEN);
+    this.login(EnvSchema.TOKEN);
   }
 
   shutdown(): void {
