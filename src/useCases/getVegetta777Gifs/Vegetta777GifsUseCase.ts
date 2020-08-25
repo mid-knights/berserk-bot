@@ -1,8 +1,8 @@
-import { GifRepository } from '../repository/GifRepository';
-import { Result, Either, left, right } from '../core/logic/Result';
-import { getRandomIntInclusive } from '../utils';
-import { UseCase } from '../core/domain/UseCase';
-import { GenericAppError } from '../core/logic/AppError';
+import { GifRepository } from '../../repository/GifRepository';
+import { Result, Either, left, right } from '../../core/logic/Result';
+import { getRandomIntInclusive } from '../../utils';
+import { UseCase } from '../../core/domain/UseCase';
+import { GenericAppError } from '../../core/logic/AppError';
 
 type Response = Either<Result<any>, Result<string>>;
 
