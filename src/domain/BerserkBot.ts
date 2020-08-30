@@ -1,7 +1,9 @@
+import 'reflect-metadata';
 import path from 'path';
 
 import Commando from 'discord.js-commando';
 import EnvSchema from './../configuration/EnvSchema';
+import { createConnection } from 'typeorm';
 
 export default class BerserkBot extends Commando.CommandoClient {
   public constructor() {
@@ -20,9 +22,11 @@ export default class BerserkBot extends Commando.CommandoClient {
         filter: /^([^.].*)\.[jt]s$/,
       });
 
-    this.on('ready', () =>
-      console.log(`Logged in successfully as ${this.user?.tag}.`)
-    );
+    this.on('ready', async () => {
+      console.log(`Logged in successfully as ${this.user?.tag}.`);
+
+      await createConnection();
+    });
 
     this.on('disconnect', () => {
       console.error(`The bot has been disconnected.`);

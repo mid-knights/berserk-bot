@@ -45,10 +45,10 @@ export = class InstagramCommand extends Command {
         embed.setColor('#F8BBD0');
         embed.setAuthor(
           `@${args.username}`,
-          result.value.getValue()?.avatarUrl || undefined
+          result.value.getValue()?.avatarURL || undefined
         );
         embed.setImage(
-          result.value.getValue()?.imageUrl ||
+          result.value.getValue().link.url ||
             'https://cdn.dribbble.com/users/1753953/screenshots/3818675/animasi-emptystate.gif'
         );
 
