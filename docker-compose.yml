@@ -1,0 +1,39 @@
+version: '3.2'
+services:
+  berserk-bd:
+    container_name: berserk-bd
+    image: postgres:9.6
+    restart: always
+    networks:
+      - berserk-network
+    ports:
+      - '5432:5432'
+    environment:
+      - LC_ALL=C.UTF-8
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_PORT=5432
+  berserk-bot:
+    depends_on:
+      - berserk-bd
+    build: './'
+    volumes:
+      - './:/var/www/berserk-bot'
+      - '/var/www/berserk-bot/node_modules'
+    links:
+      - berserk-bd
+    networks:
+      - berserk-network
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    environment:
+      - NPM_CONFIG_PRODUCTION=false
+      - SET_CONTAINER_TIMEZONE=true
+      - CONTAINER_TIMEZONE=America/Mexico_City
+      - TZ=America/Mexico_City
+
+networks:
+  berserk-network:
+    driver: bridge
